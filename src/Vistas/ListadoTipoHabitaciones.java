@@ -195,6 +195,24 @@ public class ListadoTipoHabitaciones extends javax.swing.JFrame {
 //            dispose();
 //            }
 //      
+ if (evt.getClickCount()==2) {
+            int fila=jtListaTipoHab.getSelectedRow();
+            String categoria;
+            String precio;
+            String id;
+            categoria=jtListaTipoHab.getValueAt(fila, 1).toString();
+            precio=jtListaTipoHab.getValueAt(fila, 4).toString();
+            id=jtListaTipoHab.getValueAt(fila,0).toString();
+            
+            Reservas1.jtPrecioNoche.setText(precio);
+            
+           // Reservas1.jtIdTipoHab.setText(id);
+            TipoHabitacionData tp= new TipoHabitacionData();
+           // Reservas1.jtTipoHab.setText(tp.tipohabitacion(Integer.parseInt(id))+"");
+            
+            dispose();
+            }
+
 
     }//GEN-LAST:event_jtListaTipoHabMouseClicked
 

@@ -160,11 +160,11 @@ public class ListaHuespedes extends javax.swing.JFrame {
             int fila=jtTablaClientes.getSelectedRow();
             String cod;
             String valor;
-            cod=jtTablaClientes.getValueAt(fila, 1).toString();
+            cod=jtTablaClientes.getValueAt(fila, 0).toString();
             valor=jtTablaClientes.getValueAt(fila, 3).toString() +" " +jtTablaClientes.getValueAt(fila, 4).toString();
             
-            Reservas.jtIDHuesped.setText(cod);
-            Reservas.jtNombreHuesped.setText(valor);
+            Reservas1.jtIDHuesped.setText(cod);
+            Reservas1.jtNombreHuesped.setText(valor);
             dispose();
             }        
     }//GEN-LAST:event_jtTablaClientesMousePressed

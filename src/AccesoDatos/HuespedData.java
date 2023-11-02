@@ -60,9 +60,49 @@ public class HuespedData {
             JOptionPane.showConfirmDialog(null, "error en el programa mostrar");
             return null;
         }
+    }
+    
+    
+    
+         public DefaultTableModel mostrarHuesped(String buscar){
         
+        DefaultTableModel modelo;
+        
+        String[] titulo={ "Id.","TipoD", "Numero", "Apellido", "Nombre",
+            "Domicilio", "Celular", "Correo", "E", "C"};
+        String[] registro=new String[10];
+        totalregistros=0;
+        modelo =new DefaultTableModel(null, titulo);
+        String sql ="SELECT * FROM huesped ";
+        
+        
+        try {
+            Statement st = conexion.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next()){
+                 registro[0] = rs.getString("idHuesped");
+                 registro[1] = rs.getString("tipoDocumento");
+                 registro[2] = rs.getString("numDocumento");
+                 registro[3] = rs.getString("Apellido");
+                 registro[4] = rs.getString("Nombre");
+                 registro[5] = rs.getString("domicilio");
+                  registro[6] = rs.getString("celular");
+                  registro[7] = rs.getString("correo"); 
+                  registro[8] = rs.getString("estado"); 
+                  registro[9] = rs.getString("cancelacion"); 
+                  
+                  totalregistros=totalregistros+1;
+                  modelo.addRow(registro);
+            }
+            return modelo;
+        } catch (SQLException ex) {
+            JOptionPane.showConfirmDialog(null, "error en el programa mostrarHuesped linea 67  "+ex.getMessage());
+            return null;
         
     }
+         }
+         
+         
     public void guardarHuesped(Huesped huesped){
         String sql="INSERT INTO huesped(tipoDocumento, numDocumento, apellido,"
                 + " nombre, domicilio, celular, correo, estado, cancelacion)"

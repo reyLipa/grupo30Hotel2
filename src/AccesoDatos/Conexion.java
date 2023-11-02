@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 public class Conexion {
     
     private static final String URL ="jdbc:mariadb://localhost/";
-    private static final String DB ="grupo30hotel";
+    private static final String DB ="grupo30hotel1";
     private static final String USER="root";
     private static final String PASWORD="";
     private static Connection connection;

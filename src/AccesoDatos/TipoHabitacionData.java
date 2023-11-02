@@ -68,6 +68,40 @@ public class TipoHabitacionData {
         }
     }
 
+    
+        public DefaultTableModel mostrarListadoTipoHab(String buscar) {//mostrar los registros de la base de datos
+        DefaultTableModel modelo;
+        String[] titulos = {"id","Cama","Personas","Camas","Precio/Noche"};
+        String[] registro = new String[5];//almacena los registros de los titulos
+        totalRegistros = 0;//Inicializo la variable en ceros 
+        modelo = new DefaultTableModel(null, titulos);//agrego los titulos que ya tengo
+        String sql ="SELECT * FROM tipohabitacion WHERE idTipoHab like'%"+buscar+"%'";//filtra las habitaciones por el numero de habitacion
+              
+        try {
+            Statement st = conexion.createStatement();
+            ResultSet rs = st.executeQuery(sql);//ejecutamos la consulta del sql
+
+            while (rs.next()) {//obtenemos los resutados recorriendo uno a uno los registros.
+                registro[0] = rs.getString("idTipoHab");
+                registro[1] = rs.getString("categoriaCama");
+                registro[2] = rs.getString("cantPersonasMax");
+                registro[3] = rs.getString("cantCamas");
+                registro[4] = rs.getString("precioNoche");
+
+                totalRegistros = totalRegistros + 1;//suma los registros agregados
+                modelo.addRow(registro);//agregamos a la variable modelo el vector registro
+            }
+            return modelo;
+        } catch (SQLException ex) {
+            JOptionPane.showConfirmDialog(null, "error   linea 27 TipoHabitacionData");
+           
+            return null;
+        }
+    }
+    
+    
+    
+    
     public boolean guardar(TipoHabitacion tipoHabitacion) {
         String sql = "INSERT INTO tipohabitacion (codigo, cantPersonas, cantCamas, categoriaCama,"
                 + "tipoHabitacion,  precioNoche) VALUES (?,?,?,?,?,?)";
@@ -197,5 +231,80 @@ public class TipoHabitacionData {
 
         return listaTipoHabitaciones;
     }
+
+    
+    
+    
+    public  String tipohabitacion(int id){
+        String sql="SELECT tipohabitacion.categoriaCama,habitacion.categoriaHabitacion\n" +
+"FROM tipohabitacion,habitacion\n" +
+"WHERE tipohabitacion.idTipoHab=habitacion.idTipoHab and tipoHabitacion.idTipoHab LIKE '%"+id+"%'";
+        String categoria []=new String [0];
+        String a = null;String b = null;
+         try {
+            Statement st = conexion.createStatement();
+            ResultSet rs = st.executeQuery(sql);//ejecutamos la consulta del sql
+
+            while (rs.next()) {//obtenemos los resutados recorriendo uno a uno los registros.
+                a= rs.getString("categoriaHabitacion");
+                b=rs.getString("categoriaCama");
+               
+
+//                totalregistros = totalregistros + 1;//suma los registros agregados
+                //modelo.addRow(registro);//agregamos a la variable modelo el vector registro
+                
+           }
+           //return modelo;
+        } catch (SQLException ex) {
+            JOptionPane.showConfirmDialog(null, "error en el programa mostrar tipo habitacion");
+        }
+         return a+"-"+b;
+    }    
+
+    
+    
+    public double  calcularMontoEstadia(int id ,int dias){
+TipoHabitacionData tp=new TipoHabitacionData();
+double total=0;    
+for(TipoHabitacion nuevatp:tp.listarTipoHabitacion(id)){
+    if(id==nuevatp.getIdTipoHab()){
+        total=nuevatp.getPrecioNoche()*dias;
+    }
+    }
+
+    return total;
+}
+    
+
+
+ public List<TipoHabitacion> listarTipoHabitacion(int id) {
+        List<TipoHabitacion> tipoHab  = new ArrayList<>();
+        String sql = "SELECT * FROM tipohabitacion  WHERE  idTipoHab= ? ";
+
+        try {
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                TipoHabitacion tp = new TipoHabitacion();
+
+                tp.setIdTipoHab(rs.getInt(id));
+                tp.setCategoriaCama(rs.getString("CategoriaCama"));
+                tp.setCantPersonas(rs.getString("cantPersonasMax"));
+                tp.setCantCamas(rs.getString("cantCamas"));
+                tp.setPrecioNoche(rs.getDouble("precioNoche"));
+                
+              
+                tipoHab.add(tp);
+
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error  tipoHabitacionData  144 " + ex.getMessage());
+        }
+        return tipoHab;
+    }
+    
+
 
 }

@@ -193,8 +193,10 @@ public class MenuPpal extends javax.swing.JFrame {
     }//GEN-LAST:event_JBInicioActionPerformed
 
     private void jBReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBReservaActionPerformed
-        Reservas reserva = new Reservas();
-        ShowPanel(reserva);
+//        Reservas reserva = new Reservas();
+//        ShowPanel(reserva);
+Reservas1 reserva = new Reservas1();
+ShowPanel(reserva);
     }//GEN-LAST:event_jBReservaActionPerformed
 
     private void jBRecepcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRecepcionActionPerformed

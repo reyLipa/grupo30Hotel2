@@ -8,13 +8,22 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ *
+ * @author matias
+ */
 public class TipoHabitaciones extends javax.swing.JPanel {
 
     private TipoHabitacionData thd;
     private TipoHabitacion thactual = null;
 
     private DefaultTableModel modelo;
+private String m ="Modificar";
+private String n="Nuevo";
 
+    /**
+     *
+     */
     public TipoHabitaciones() {
         initComponents();
         thactual = new TipoHabitacion();
@@ -22,8 +31,9 @@ public class TipoHabitaciones extends javax.swing.JPanel {
 
         modelo = new DefaultTableModel();
         mostrar("");
-
+        jbModificar.setText(n);
     }
+   
 
     private void mensaje(String mensaje) {
         JOptionPane.showMessageDialog(this, mensaje);
@@ -37,6 +47,8 @@ public class TipoHabitaciones extends javax.swing.JPanel {
         jtfTipoHabitacion.setText("");
         jtfPrecio.setText("");
         jtfTotal.setText("");
+        jbModificar.setText(n);
+        
     }
 
     private void borrarFilaTabla() {
@@ -61,7 +73,7 @@ public class TipoHabitaciones extends javax.swing.JPanel {
         jtfCategoriaC.setEnabled(false);
         jtfTipoHabitacion.setEnabled(false);
 
-        jbNuevo.setEnabled(false);
+//        jbNuevo.setEnabled(false);
         jbEliminar.setEnabled(false);
     }
 
@@ -74,7 +86,7 @@ public class TipoHabitaciones extends javax.swing.JPanel {
         jtfCategoriaC.setEnabled(true);
         jtfTipoHabitacion.setEnabled(true);
 
-        jbNuevo.setEnabled(true);
+//        jbNuevo.setEnabled(true);
         jbEliminar.setEnabled(true);
     }
 
@@ -122,7 +134,6 @@ public class TipoHabitaciones extends javax.swing.JPanel {
         jcCantP = new javax.swing.JComboBox<>();
         jTFID = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jbNuevo = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtListaTipoHab = new javax.swing.JTable();
@@ -153,13 +164,18 @@ public class TipoHabitaciones extends javax.swing.JPanel {
 
         jLabel5.setText("Precio por noche");
 
+        jtfPrecio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfPrecioActionPerformed(evt);
+            }
+        });
         jtfPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jtfPrecioKeyTyped(evt);
             }
         });
 
-        jbModificar.setText("Modificar");
+        jbModificar.setText("Guardar");
         jbModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbModificarActionPerformed(evt);
@@ -213,13 +229,6 @@ public class TipoHabitaciones extends javax.swing.JPanel {
 
         jLabel6.setText("  ID");
 
-        jbNuevo.setText("Nuevo");
-        jbNuevo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbNuevoActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -242,7 +251,7 @@ public class TipoHabitaciones extends javax.swing.JPanel {
                             .addComponent(jtfTipoHabitacion)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
-                                .addGap(0, 53, Short.MAX_VALUE))))
+                                .addGap(0, 65, Short.MAX_VALUE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -267,13 +276,11 @@ public class TipoHabitaciones extends javax.swing.JPanel {
                             .addGap(18, 18, 18)
                             .addComponent(jLabel2))
                         .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGap(14, 14, 14)
-                            .addComponent(jbNuevo)
-                            .addGap(18, 18, 18)
+                            .addGap(95, 95, 95)
                             .addComponent(jbModificar)
                             .addGap(18, 18, 18)
                             .addComponent(jblimpiar))))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -288,7 +295,7 @@ public class TipoHabitaciones extends javax.swing.JPanel {
                     .addComponent(jtfPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtfCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTFID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel1))
@@ -307,8 +314,7 @@ public class TipoHabitaciones extends javax.swing.JPanel {
                 .addGap(37, 37, 37)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbModificar)
-                    .addComponent(jblimpiar)
-                    .addComponent(jbNuevo))
+                    .addComponent(jblimpiar))
                 .addGap(18, 18, 18)
                 .addComponent(jbEliminar)
                 .addContainerGap())
@@ -363,6 +369,12 @@ public class TipoHabitaciones extends javax.swing.JPanel {
             }
         });
 
+        jtfBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfBuscarKeyTyped(evt);
+            }
+        });
+
         jbCargar.setText("Cargar");
         jbCargar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -400,7 +412,7 @@ public class TipoHabitaciones extends javax.swing.JPanel {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addContainerGap(32, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbCargar)
                     .addComponent(jbLimpiarTabla)
@@ -432,7 +444,7 @@ public class TipoHabitaciones extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(354, Short.MAX_VALUE))
+                .addContainerGap(360, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -455,14 +467,16 @@ public class TipoHabitaciones extends javax.swing.JPanel {
 
     private void jblimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jblimpiarActionPerformed
         LimpiarCampos();
-        jbNuevo.setEnabled(true);
+       // jbNuevo.setEnabled(true);
+        jbModificar.setText("Nuevo");
     }//GEN-LAST:event_jblimpiarActionPerformed
 
 
     private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
 
-        jbNuevo.setEnabled(false);
-        jbModificar.setEnabled(true);
+        //jbNuevo.setEnabled(false);
+       // jbModificar.setEnabled(true);
+        
 
         if (jtfCodigo.getText().length() == 0 || jtfCodigo.getText().equals(".")) {
 
@@ -471,12 +485,12 @@ public class TipoHabitaciones extends javax.swing.JPanel {
             return;
         }
         System.out.println("+");
-        if (jtfPrecio.getText().length() == 0) {
+////        if (jtfPrecio.getText().length() == 0) {
 
-            JOptionPane.showConfirmDialog(null, "debes ingresar el precio");
-//            jtfPrecio.requestFocus();
-            return;
-        }
+//            JOptionPane.showConfirmDialog(null, "debes ingresar el precio");
+////            jtfPrecio.requestFocus();
+//            return;
+//        }
         System.out.println("++");
         if (jtfCantC.getText().length() == 0) {
 
@@ -500,22 +514,24 @@ public class TipoHabitaciones extends javax.swing.JPanel {
             return;
         }
         System.out.println("+++++");
-
+        
+        //si el texto del boton = Modificar , modifica el tipoHab
+        if(jbModificar.getText()==m){
+        
         TipoHabitacion thactual = new TipoHabitacion();     
         thactual.setCodigo(jtfCodigo.getText());
         thactual.setCantPersonas(jcCantP.getSelectedItem().toString());
         thactual.setCantCamas(jtfCantC.getText());
         thactual.setCategoriaCama(jtfCategoriaC.getText());
-        System.out.println("--");
         thactual.setTipoHabitacion(jtfTipoHabitacion.getText());
+        try {
+////           thactual.setPrecioNoche(Integer.parseInt(jtfPrecio.getText()));
+           thactual.setPrecioNoche(Double.parseDouble(jtfPrecio.getText()));
+        } catch (NumberFormatException e) {
+            mensaje("Debe ingresar un número decimal" + e);
+        }        //
         
          TipoHabitacionData thd = new TipoHabitacionData();
-//        
-//        try {
-//            thactual.setPrecioNoche(Double.parseDouble(jtfPrecio.getText()));
-//        } catch (NumberFormatException e) {
-//            mensaje("Debe ingresar un número decimal" + e);
-//        }
 
         System.out.println("3");
 
@@ -524,11 +540,41 @@ public class TipoHabitaciones extends javax.swing.JPanel {
             mostrar("");
             LimpiarCampos();
         }
+                    mostrar("");
 
+        }else if ( jbModificar.getText()== n){
+        //jbNuevo.setEnabled(true);
+        //jbModificar.setEnabled(true);
+        TipoHabitacion thactual = new TipoHabitacion();
+        TipoHabitacionData thd = new TipoHabitacionData();
+
+        thactual.setCodigo(jtfCodigo.getText());
+        thactual.setCantPersonas(jcCantP.getSelectedItem().toString());
+        thactual.setCantCamas(jtfCantC.getText());
+        thactual.setCategoriaCama(jtfCategoriaC.getText());
+        thactual.setTipoHabitacion(jtfTipoHabitacion.getText());
+
+        try {
+          // thactual.setPrecioNoche(Integer.parseInt(jtfPrecio.getText()));
+           thactual.setPrecioNoche(Double.parseDouble(jtfPrecio.getText()));
+        } catch (NumberFormatException e) {
+            mensaje("Debe ingresar un número decimal" + e);
+        }
+
+        if (thd.guardar(thactual)) {
+            JOptionPane.showMessageDialog(null, "Habitación guardada exitosamente");
+            mostrar("");
+            LimpiarCampos();
+        }    
+        
+        }
+        
+        
+        
     }//GEN-LAST:event_jbModificarActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-
+//funciona
         if (!jtfCodigo.getText().equals("")) {
             int confirmar = JOptionPane.showConfirmDialog(this, "Confirme si quiere eliminar", "Confirmar", JOptionPane.YES_NO_OPTION);
 
@@ -551,8 +597,9 @@ public class TipoHabitaciones extends javax.swing.JPanel {
 
     private void jtListaTipoHabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtListaTipoHabMouseClicked
 
-        jbNuevo.setEnabled(false);
+     ///   jbNuevo.setEnabled(false);
         jbModificar.setEnabled(true);
+        jbModificar.setText(m);
         
         jbEliminar.setEnabled(true);
         jtfCodigo.setVisible(true);
@@ -576,6 +623,7 @@ public class TipoHabitaciones extends javax.swing.JPanel {
     private void jbLimpiarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarTablaActionPerformed
         borrarFilaTabla();
         jtfBuscar.setText("");
+        mostrar("");
     }//GEN-LAST:event_jbLimpiarTablaActionPerformed
 
     private void jbCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCargarActionPerformed
@@ -631,57 +679,17 @@ public class TipoHabitaciones extends javax.swing.JPanel {
         jtfCodigo.transferFocus();
     }//GEN-LAST:event_jtfCodigoKeyTyped
 
-    private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
+    private void jtfPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfPrecioActionPerformed
         // TODO add your handling code here:
-        jbNuevo.setEnabled(true);
-        jbModificar.setEnabled(false);
+    }//GEN-LAST:event_jtfPrecioActionPerformed
 
-        if (jtfCodigo.getText().length() == 0) {
-            JOptionPane.showConfirmDialog(null, "Debes ingresar el código");
-//            jtfCodigo.requestFocus();
-            return;
+    private void jtfBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfBuscarKeyTyped
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if (!Character.isLetter(evt.getKeyChar()) && evt.getKeyChar() != ' ') { // Permite escribir SOLo caracteres y espacios
+            evt.consume();
         }
-
-        if (jtfPrecio.getText().length() == 0  || !jtfCodigo.getText().equals(".")) {
-            JOptionPane.showConfirmDialog(null, "Debes ingresar el precio");
-//            jtfPrecio.requestFocus();
-            return;
-        }
-
-        if (jtfCantC.getText().length() == 0) {
-            JOptionPane.showConfirmDialog(null, "Debes ingresar la cantidad de camas");
-//            jtfCantC.requestFocus();
-            return;
-        }
-
-        if (jtfCategoriaC.getText().length() == 0) {
-            JOptionPane.showConfirmDialog(null, "Debes ingresar la categoría de las camas");
-//            jtfCategoriaC.requestFocus();
-            return;
-        }
-
-        TipoHabitacion thactual = new TipoHabitacion();
-        TipoHabitacionData thd = new TipoHabitacionData();
-
-        thactual.setCodigo(jtfCodigo.getText());
-        thactual.setCantPersonas(jcCantP.getSelectedItem().toString());
-        thactual.setCantCamas(jtfCantC.getText());
-        thactual.setCategoriaCama(jtfCategoriaC.getText());
-        thactual.setTipoHabitacion(jtfTipoHabitacion.getText());
-
-        try {
-            thactual.setPrecioNoche(Double.parseDouble(jtfPrecio.getText()));
-        } catch (NumberFormatException e) {
-            mensaje("Debe ingresar un número decimal" + e);
-        }
-
-        if (thd.guardar(thactual)) {
-            JOptionPane.showMessageDialog(null, "Habitación guardada exitosamente");
-            mostrar("");
-            LimpiarCampos();
-        }
-
-    }//GEN-LAST:event_jbNuevoActionPerformed
+    }//GEN-LAST:event_jtfBuscarKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -702,7 +710,6 @@ public class TipoHabitaciones extends javax.swing.JPanel {
     private javax.swing.JButton jbEliminar;
     private javax.swing.JButton jbLimpiarTabla;
     private javax.swing.JButton jbModificar;
-    private javax.swing.JButton jbNuevo;
     private javax.swing.JButton jbSalir;
     private javax.swing.JButton jblimpiar;
     private javax.swing.JComboBox<String> jcCantP;

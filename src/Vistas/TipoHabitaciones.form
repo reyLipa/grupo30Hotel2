@@ -72,7 +72,7 @@
                       <Component id="jPanel2" alignment="0" min="-2" pref="409" max="-2" attributes="0"/>
                       <Component id="jPanel3" min="-2" pref="401" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="354" max="32767" attributes="0"/>
+                  <EmptySpace pref="360" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -118,7 +118,7 @@
                                   <Component id="jtfTipoHabitacion" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="53" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="65" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -154,16 +154,14 @@
                                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                                  <Component id="jbNuevo" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
                                   <Component id="jbModificar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jblimpiar" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="23" max="32767" attributes="0"/>
+                      <EmptySpace pref="83" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -182,7 +180,7 @@
                           <Component id="jtfCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jTFID" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="50" max="32767" attributes="0"/>
+                      <EmptySpace pref="117" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -206,7 +204,6 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jbModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jblimpiar" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jbNuevo" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Component id="jbEliminar" min="-2" max="-2" attributes="0"/>
@@ -243,12 +240,16 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jtfPrecio">
               <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfPrecioActionPerformed"/>
                 <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtfPrecioKeyTyped"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JButton" name="jbModificar">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Modificar"/>
+                <Property name="text" type="java.lang.String" value="Guardar"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbModificarActionPerformed"/>
@@ -322,14 +323,6 @@
                 <Property name="text" type="java.lang.String" value="  ID"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jbNuevo">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Nuevo"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbNuevoActionPerformed"/>
-              </Events>
-            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel3">
@@ -389,7 +382,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="20" max="32767" attributes="0"/>
+                      <EmptySpace pref="32" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jbCargar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jbLimpiarTabla" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -462,6 +455,9 @@
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="jtfBuscar">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtfBuscarKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jbCargar">
               <Properties>
