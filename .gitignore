@@ -2,5 +2,4 @@ dist/
 build/
 test/
 nbproject/private/
-build/built-jar.properties
-nbproject/private/private.properties
+
